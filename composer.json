@@ -1,0 +1,16 @@
+{
+    "name": "softspring/user",
+    "description": "Softspring's users component",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "symfony/event-dispatcher": "^4.2",
+        "symfony/http-foundation": "^4.2",
+        "symfony/security-core": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Softspring\\User\\": ""
+        }
+    }
+}
