@@ -4,7 +4,7 @@ namespace Softspring\User\Model;
 
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 
-interface UserInterface extends SymfonyUserInterface, \Serializable
+interface UserInterface extends SymfonyUserInterface, \Serializable, NameSurnameInterface
 {
     /**
      * @inheritdoc
@@ -25,26 +25,6 @@ interface UserInterface extends SymfonyUserInterface, \Serializable
      * @return string|null
      */
     public function getEmail(): ?string;
-
-    /**
-     * @return null|string
-     */
-    public function getName(): ?string;
-
-    /**
-     * @param null|string $name
-     */
-    public function setName(?string $name): void;
-
-    /**
-     * @return null|string
-     */
-    public function getSurname(): ?string;
-
-    /**
-     * @param null|string $surname
-     */
-    public function setSurname(?string $surname): void;
 
     /**
      * @param string|null $email
