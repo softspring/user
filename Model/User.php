@@ -25,16 +25,6 @@ class User implements UserInterface
     protected $email;
 
     /**
-     * @var string|null
-     */
-    protected $name;
-
-    /**
-     * @var string|null
-     */
-    protected $surname;
-
-    /**
      * @var bool
      */
     protected $enabled = false;
@@ -68,26 +58,6 @@ class User implements UserInterface
      * @var int|null
      */
     protected $lastLogin;
-
-    /**
-     * @var int|null
-     */
-    protected $passwordRequestedAt;
-
-    /**
-     * @var string|null
-     */
-    protected $passwordRequestToken;
-
-    /**
-     * @var string|null
-     */
-    protected $confirmationToken;
-
-    /**
-     * @var int|null
-     */
-    protected $confirmedAt;
 
     /**
      * @var array
@@ -151,8 +121,6 @@ class User implements UserInterface
             $this->enabled,
             $this->id,
             $this->email,
-            $this->name,
-            $this->surname,
         ]);
     }
 
@@ -168,8 +136,6 @@ class User implements UserInterface
             $this->enabled,
             $this->id,
             $this->email,
-            $this->name,
-            $this->surname,
         ) = unserialize($serialized);
     }
 
@@ -219,38 +185,6 @@ class User implements UserInterface
     public function setEmail(?string $email): void
     {
         $this->email = $email;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string|null $name
-     */
-    public function setName(?string $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
-
-    /**
-     * @param string|null $surname
-     */
-    public function setSurname(?string $surname): void
-    {
-        $this->surname = $surname;
     }
 
     /**
@@ -367,70 +301,6 @@ class User implements UserInterface
     public function setLastLogin(?\DateTime $lastLogin): void
     {
         $this->lastLogin = $lastLogin instanceof \DateTime ? $lastLogin->format('U') : null;
-    }
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getPasswordRequestedAt(): ?\DateTime
-    {
-        return \DateTime::createFromFormat("U", $this->passwordRequestedAt) ?: null;
-    }
-
-    /**
-     * @param \DateTime|null $passwordRequestedAt
-     */
-    public function setPasswordRequestedAt(?\DateTime $passwordRequestedAt): void
-    {
-        $this->passwordRequestedAt = $passwordRequestedAt instanceof \DateTime ? $passwordRequestedAt->format('U') : null;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPasswordRequestToken(): ?string
-    {
-        return $this->passwordRequestToken;
-    }
-
-    /**
-     * @param string|null $passwordRequestToken
-     */
-    public function setPasswordRequestToken(?string $passwordRequestToken): void
-    {
-        $this->passwordRequestToken = $passwordRequestToken;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getConfirmationToken(): ?string
-    {
-        return $this->confirmationToken;
-    }
-
-    /**
-     * @param string|null $confirmationToken
-     */
-    public function setConfirmationToken(?string $confirmationToken): void
-    {
-        $this->confirmationToken = $confirmationToken;
-    }
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getConfirmedAt(): ?\DateTime
-    {
-        return \DateTime::createFromFormat("U", $this->confirmedAt) ?: null;
-    }
-
-    /**
-     * @param \DateTime|null $confirmedAt
-     */
-    public function setConfirmedAt(?\DateTime $confirmedAt): void
-    {
-        $this->confirmedAt = $confirmedAt instanceof \DateTime ? $confirmedAt->format('U') : null;
     }
 
     /**

@@ -4,7 +4,7 @@ namespace Softspring\User\Model;
 
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 
-interface UserInterface extends SymfonyUserInterface, \Serializable, NameSurnameInterface
+interface UserInterface extends SymfonyUserInterface, \Serializable
 {
     /**
      * @inheritdoc
@@ -82,26 +82,6 @@ interface UserInterface extends SymfonyUserInterface, \Serializable, NameSurname
     public function setLastLogin(?\DateTime $lastLogin): void;
 
     /**
-     * @return \DateTime|null
-     */
-    public function getPasswordRequestedAt(): ?\DateTime;
-
-    /**
-     * @param \DateTime|null $passwordRequestedAt
-     */
-    public function setPasswordRequestedAt(?\DateTime $passwordRequestedAt): void;
-
-    /**
-     * @return string|null
-     */
-    public function getPasswordRequestToken(): ?string;
-
-    /**
-     * @param string|null $passwordRequestToken
-     */
-    public function setPasswordRequestToken(?string $passwordRequestToken): void;
-
-    /**
      * @param string|null $username
      */
     public function setUsername(?string $username): void;
@@ -117,27 +97,7 @@ interface UserInterface extends SymfonyUserInterface, \Serializable, NameSurname
     public function setPassword(?string $password): void;
 
     /**
-     * @return null|string
-     */
-    public function getConfirmationToken(): ?string;
-
-    /**
-     * @param null|string $confirmationToken
-     */
-    public function setConfirmationToken(?string $confirmationToken): void;
-
-    /**
      * @param array $roles
      */
     public function setRoles(array $roles): void;
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getConfirmedAt(): ?\DateTime;
-
-    /**
-     * @param \DateTime|null $confirmedAt
-     */
-    public function setConfirmedAt(?\DateTime $confirmedAt): void;
 }
