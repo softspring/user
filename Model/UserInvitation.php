@@ -2,6 +2,8 @@
 
 namespace Softspring\User\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Class User
  */
@@ -48,16 +50,6 @@ class UserInvitation implements UserInvitationInterface
     protected $enabled = false;
 
     /**
-     * @var bool
-     */
-    protected $admin = false;
-
-    /**
-     * @var bool
-     */
-    protected $superAdmin = false;
-
-    /**
      * @var string|null
      */
     protected $invitationToken;
@@ -67,10 +59,7 @@ class UserInvitation implements UserInvitationInterface
      */
     protected $acceptedAt;
 
-    /**
-     * @var array
-     */
-    protected $roles = [];
+    use Traits\AdminRolesTrait;
 
     /**
      * @inheritdoc
@@ -81,11 +70,11 @@ class UserInvitation implements UserInvitationInterface
     }
 
     /**
-     * @inheritdoc
+     * User constructor.
      */
-    public function getRoles(): array
+    public function __construct()
     {
-        return $this->roles;
+        $this->roles = [];
     }
 
     /**
@@ -185,38 +174,6 @@ class UserInvitation implements UserInvitationInterface
     }
 
     /**
-     * @return bool
-     */
-    public function isAdmin(): bool
-    {
-        return $this->admin;
-    }
-
-    /**
-     * @param bool $admin
-     */
-    public function setAdmin(bool $admin): void
-    {
-        $this->admin = $admin;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isSuperAdmin(): bool
-    {
-        return $this->superAdmin;
-    }
-
-    /**
-     * @param bool $superAdmin
-     */
-    public function setSuperAdmin(bool $superAdmin): void
-    {
-        $this->superAdmin = $superAdmin;
-    }
-
-    /**
      * @return string|null
      */
     public function getInvitationToken(): ?string
@@ -246,14 +203,6 @@ class UserInvitation implements UserInvitationInterface
     public function setAcceptedAt(?\DateTime $acceptedAt): void
     {
         $this->acceptedAt = $acceptedAt instanceof \DateTime ? $acceptedAt->format('U') : null;
-    }
-
-    /**
-     * @param array $roles
-     */
-    public function setRoles(array $roles): void
-    {
-        $this->roles = $roles;
     }
 
     /**

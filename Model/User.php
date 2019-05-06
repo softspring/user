@@ -2,8 +2,6 @@
 
 namespace Softspring\User\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Class User
  */
@@ -30,16 +28,6 @@ class User implements UserInterface
     protected $enabled = false;
 
     /**
-     * @var bool
-     */
-    protected $admin = false;
-
-    /**
-     * @var bool
-     */
-    protected $superAdmin = false;
-
-    /**
      * @var string|null
      */
     protected $salt;
@@ -59,10 +47,7 @@ class User implements UserInterface
      */
     protected $lastLogin;
 
-    /**
-     * @var array
-     */
-    protected $roles = [];
+    use Traits\AdminRolesTrait;
 
     /**
      * @inheritdoc
@@ -78,27 +63,6 @@ class User implements UserInterface
     public function __construct()
     {
         $this->roles = [];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getRoles()
-    {
-        $roles = $this->roles;
-
-        // we need to make sure to have at least one role
-        $roles[] = 'ROLE_USER';
-
-        if ($this->isAdmin()) {
-            $roles[] = 'ROLE_ADMIN';
-        }
-
-        if ($this->isSuperAdmin()) {
-            $roles[] = 'ROLE_SUPER_ADMIN';
-        }
-
-        return array_unique($roles);
     }
 
     /**
@@ -204,42 +168,6 @@ class User implements UserInterface
     }
 
     /**
-     * @return bool
-     */
-    public function isAdmin(): bool
-    {
-        return $this->admin;
-    }
-
-    /**
-     * @param bool $admin
-     */
-    public function setAdmin(bool $admin): void
-    {
-        $this->admin = $admin;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isSuperAdmin(): bool
-    {
-        return $this->superAdmin;
-    }
-
-    /**
-     * @param bool $superAdmin
-     */
-    public function setSuperAdmin(bool $superAdmin): void
-    {
-        $this->superAdmin = $superAdmin;
-
-        if ($superAdmin) {
-            $this->setAdmin(true);
-        }
-    }
-
-    /**
      * @return string|null
      */
     public function getSalt(): ?string
@@ -301,25 +229,5 @@ class User implements UserInterface
     public function setLastLogin(?\DateTime $lastLogin): void
     {
         $this->lastLogin = $lastLogin instanceof \DateTime ? $lastLogin->format('U') : null;
-    }
-
-    /**
-     * @param array $roles
-     */
-    public function setRoles(array $roles): void
-    {
-        $rolesCollection = new ArrayCollection($roles);
-
-        if ($rolesCollection->contains('ROLE_ADMIN')) {
-            $rolesCollection->removeElement('ROLE_ADMIN');
-            $this->setAdmin(true);
-        }
-
-        if ($rolesCollection->contains('ROLE_SUPER_ADMIN')) {
-            $rolesCollection->removeElement('ROLE_SUPER_ADMIN');
-            $this->setSuperAdmin(true);
-        }
-
-        $this->roles = $rolesCollection->toArray();
     }
 }

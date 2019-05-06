@@ -102,7 +102,7 @@ interface UserInvitationInterface
     /**
      * @return array
      */
-    public function getRoles(): array;
+    public function getRoles();
 
     /**
      * @param array $roles
