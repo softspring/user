@@ -8,7 +8,7 @@ namespace Softspring\User\Model;
 class UserAccess implements UserAccessInterface
 {
     /**
-     * @var int
+     * @var mixed
      */
     protected $id;
 

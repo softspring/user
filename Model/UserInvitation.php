@@ -2,15 +2,13 @@
 
 namespace Softspring\User\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Class User
  */
 class UserInvitation implements UserInvitationInterface
 {
     /**
-     * @var string|null
+     * @var mixed|null
      */
     protected $id;
 
@@ -78,19 +76,11 @@ class UserInvitation implements UserInvitationInterface
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
-    public function getId(): ?string
+    public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param string|null $id
-     */
-    public function setId(?string $id): void
-    {
-        $this->id = $id;
     }
 
     /**

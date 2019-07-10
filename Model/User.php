@@ -8,7 +8,7 @@ namespace Softspring\User\Model;
 class User implements UserInterface
 {
     /**
-     * @var string|null
+     * @var mixed
      */
     protected $id;
 
@@ -109,14 +109,6 @@ class User implements UserInterface
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    /**
-     * @param string|null $id
-     */
-    public function setId(?string $id): void
-    {
-        $this->id = $id;
     }
 
     /**

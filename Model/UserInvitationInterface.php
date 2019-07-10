@@ -10,19 +10,14 @@ interface UserInvitationInterface
     public function __toString(): string;
 
     /**
-     * @param string|null $id
+     * @return mixed|null
      */
-    public function setId(?string $id): void;
+    public function getId();
 
     /**
      * @return string|null
      */
     public function getUsername(): ?string;
-
-    /**
-     * @return string|null
-     */
-    public function getId(): ?string;
 
     /**
      * @return string|null
