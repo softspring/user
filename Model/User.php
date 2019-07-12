@@ -104,9 +104,9 @@ class User implements UserInterface
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
-    public function getId(): ?string
+    public function getId()
     {
         return $this->id;
     }
