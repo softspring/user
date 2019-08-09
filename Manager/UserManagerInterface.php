@@ -28,6 +28,11 @@ interface UserManagerInterface
     public function save(UserInterface $user): void;
 
     /**
+     * @param UserInterface $user
+     */
+    public function delete(UserInterface $user): void;
+
+    /**
      * @param array $criteria
      *
      * @return UserInterface|null
