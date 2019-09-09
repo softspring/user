@@ -3,6 +3,7 @@
 namespace Softspring\User\Manager;
 
 use Doctrine\ORM\EntityRepository;
+use Softspring\User\Model\ConfirmableInterface;
 use Softspring\User\Model\UserInterface;
 
 interface UserManagerInterface
@@ -63,7 +64,7 @@ interface UserManagerInterface
     /**
      * @param string $token
      *
-     * @return UserInterface|null
+     * @return UserInterface|ConfirmableInterface|null
      */
     public function findUserByConfirmationToken($token);
 }
