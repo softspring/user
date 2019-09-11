@@ -3,7 +3,7 @@
 namespace Softspring\User\Model;
 
 /**
- * Class User
+ * @deprecated since UserBundle 1.1
  */
 class UserInvitation implements UserInvitationInterface
 {

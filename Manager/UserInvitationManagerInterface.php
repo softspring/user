@@ -6,6 +6,9 @@ use Doctrine\ORM\EntityRepository;
 use Softspring\User\Model\UserInterface;
 use Softspring\User\Model\UserInvitationInterface;
 
+/**
+ * @deprecated since UserBundle 1.1
+ */
 interface UserInvitationManagerInterface
 {
     /**

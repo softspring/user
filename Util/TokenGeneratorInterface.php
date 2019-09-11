@@ -2,6 +2,9 @@
 
 namespace Softspring\User\Util;
 
+/**
+ * @deprecated since UserBundle 1.1
+ */
 interface TokenGeneratorInterface
 {
     /**

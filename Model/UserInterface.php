@@ -4,6 +4,9 @@ namespace Softspring\User\Model;
 
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 
+/**
+ * @deprecated since UserBundle 1.1
+ */
 interface UserInterface extends SymfonyUserInterface, \Serializable
 {
     /**

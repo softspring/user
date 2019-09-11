@@ -3,7 +3,7 @@
 namespace Softspring\User\Model;
 
 /**
- * Class UserAccess
+ * @deprecated since UserBundle 1.1
  */
 class UserAccess implements UserAccessInterface
 {

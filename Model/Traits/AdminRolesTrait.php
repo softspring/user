@@ -4,6 +4,9 @@ namespace Softspring\User\Model\Traits;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * @deprecated since UserBundle 1.1
+ */
 trait AdminRolesTrait
 {
     /**

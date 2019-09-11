@@ -5,6 +5,9 @@ namespace Softspring\User\Manager;
 use Doctrine\ORM\EntityRepository;
 use Softspring\User\Model\UserInterface;
 
+/**
+ * @deprecated since UserBundle 1.1
+ */
 interface UserManagerInterface
 {
     /**
